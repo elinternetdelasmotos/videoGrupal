@@ -1,0 +1,46 @@
+{
+  "name": "EIDLM video grupal",
+  "version": "1.0",
+  "description": "Una extension de chrome con lo minimo necesario para sincronizar los videos de youtube de los amigos desde twich",
+  "permissions": ["activeTab","declarativeContent"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "verificador.html" ,
+    "default_icon": {
+     "16": "images/icono_pagina_verificador16.png",
+     "32": "images/icono_pagina_verificador32.png",
+     "48": "images/icono_pagina_verificador48.png",
+     "128": "images/icono_pagina_verificador128.png"
+   }
+  },
+  "icons": {
+    "16": "images/icono_EIDLM_VG16.png",
+    "32": "images/icono_EIDLM_VG32.png",
+    "48": "images/icono_EIDLM_VG48.png",
+    "128": "images/icono_EIDLM_VG128.png"
+  },
+  "manifest_version": 2,
+  "content_scripts": [
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "js": [
+                "youtube_script.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "*://*.twitch.tv/*"
+            ],
+            "js": [
+                "twich_script.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
